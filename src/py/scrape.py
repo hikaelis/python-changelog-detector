@@ -40,7 +40,7 @@ def get_formatted_current_time(format: str):
     # 現在の日時を取得
     now = datetime.now()
     # 指定のフォーマット (YYMMDDHHMMSS) で文字列に変換
-    formatted_time = now.strftime(format)
+    formatted_time = f"{now.strftime(format)} (UTC+0)"
     return formatted_time
 
 
