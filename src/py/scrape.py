@@ -36,18 +36,19 @@ def write_text_to_file(text: str, file_path: str):
         print(f"Failed to write to file: {e}")
         
 
-def get_formatted_current_time():
+def get_formatted_current_time(format: str):
     # 現在の日時を取得
     now = datetime.now()
     # 指定のフォーマット (YYMMDDHHMMSS) で文字列に変換
-    formatted_time = now.strftime('%y%m%d%H%M%S')
+    formatted_time = now.strftime(format)
     return formatted_time
 
 
 def get_diff_text(target_dir: str) -> str:
+    formatted_time = get_formatted_current_time('%Y/%m/%d %H:%M:%S')
     text_files = glob.glob(os.path.join(target_dir, '*.txt'))
     if len(text_files) <= 1:
-        return None
+        return f"{formatted_time} No change"
     # ファイルの作成日時順に並び替え
     text_files.sort(key=os.path.getctime, reverse=True)
     
@@ -62,10 +63,10 @@ def get_diff_text(target_dir: str) -> str:
     
     # 同一の場合はreturn 
     if latest_text == prev_text:
-        return None
+        return f"{formatted_time} No change"
     
     res = difflib.ndiff(latest_text.split(), prev_text.split())
-    diff = []
+    diff = [formatted_time]
     for r in res:
         if r[0:1] in ['+', '-']:
             diff.append(r)

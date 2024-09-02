@@ -17,6 +17,7 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.12"]
+        node-version: [20.x]
     steps:
       - uses: actions/checkout@v4
 
@@ -30,4 +31,18 @@ jobs:
 
       - name: Get Diff Text
         run: python ./src/py/main.py
+        timeout-minutes: 2
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+          cache-dependency-path: ./package-lock.json
+
+      - name: Install Dependencies
+        run: npm install
+      
+      - name: Post to Nostr
+        run: npx ts-node ./src/ts/index.ts
         timeout-minutes: 2
