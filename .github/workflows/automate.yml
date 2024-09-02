@@ -21,6 +21,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Create dot env file
+      - shell: bash
+      run: |
+        touch .env
+        echo "FOO=${{ secrets.BOT_PRIVATE_KEY_HEX }}" >> .env
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
