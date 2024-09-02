@@ -62,5 +62,5 @@ jobs:
           git config --global user.email ${{ secrets.USER_EMAIL }}
           git config --global user.name ${{ secrets.USER_NAME }}
           git add .
-          git commit -m "[add] 定期実行:${{ env.CURRENT_DATETIME }}"
+          git commit -m "定期実行:${{ env.CURRENT_DATETIME }}"
           git push origin main
