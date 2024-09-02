@@ -6,8 +6,8 @@ on:
     branches: ["**"]
 
 permissions:
-  contents: read
-  issues: read
+  contents: write
+  issues: write
   checks: write
   pull-requests: write
 
