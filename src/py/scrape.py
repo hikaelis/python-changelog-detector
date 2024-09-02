@@ -68,7 +68,7 @@ def get_diff_text(target_dir: str) -> str:
     res = difflib.ndiff(latest_text.split(), prev_text.split())
     diff = [formatted_time]
     for r in res:
-        if r[0:1] in ['+', '-']:
+        if r[0:1] in ['+']:
             diff.append(r)
     diff_text = "\n".join(diff)
     
