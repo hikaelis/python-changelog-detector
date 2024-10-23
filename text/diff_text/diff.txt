@@ -1,11 +1,1 @@
-2024/10/22 03:19:16 (UTC+0)
-+ locale.nl_langinfo(locale.ALT_DIGITS).
-+ tuple
-+ strings
-+ tuple
-+ on
-+ locales).
-+ item
-+ of
-+ that
-+ tuple
+2024/10/23 03:18:48 (UTC+0)
